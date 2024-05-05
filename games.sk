@@ -1,0 +1,282 @@
+options:
+  cooldown: 180 seconds
+  soltime: 15
+  prefix_l1: ""
+  prefix_l2: "                      &f✓ ⭐ &c&lG&d&lR&b&lA&a&lS&b&lE&bN &6&lG&e&lA&a&lM&c&lE&b&lS &f⭐ ✓"
+  prefix_l3: ""
+  sol_cmd_1: "say Well Done %player's name%!"
+  sol_cmd_2: "-"
+  author: "WR_Doll770"
+  version: "1.1"
+  update_message: true
+
+every {@cooldown}:
+  set {sel_} to a random integer between 1 and 3
+  chatgame({sel_})
+
+every second:
+  if {games::time} is more than 0:
+    remove 1 from {games::time}
+    #broadcast {games::time}
+  #  broadcast {dif}
+    if {games::time} is 0:
+      set {prefix_l1} to {@prefix_l1}
+      set {prefix_l2} to {@prefix_l2}
+      set {prefix_l3} to {@prefix_l3}
+      broadcast {prefix_l1}
+      broadcast {prefix_l2}
+      broadcast {prefix_l3}
+      broadcast "                15s &chave passed! &fThe game is over!"
+      broadcast "                      The correct answer was &e%{games::sol}%"
+      broadcast ""
+
+on chat:
+  if {games::time} is more than 0:
+    if chat message contains {games::sol}:
+      cancel Event
+      set {dif} to difference between {games::t} and now
+      set {prefix_l1} to {@prefix_l1}
+      set {prefix_l2} to {@prefix_l2}
+      set {prefix_l3} to {@prefix_l3}
+      broadcast {prefix_l1}
+      broadcast {prefix_l2}
+      broadcast {prefix_l3}
+      broadcast "               &a%player's name% &7was the fastest to get"
+      broadcast "                &7the solution: '&e%{games::sol}%&7' and got a prize!"
+      broadcast "                      &7It took (&c%{dif}%&7)"
+      broadcast ""
+      set {games::time} to 0
+      set {sol_cmd_1} to {@sol_cmd_1}
+      set {sol_cmd_2} to {@sol_cmd_2}
+      if {sol_cmd_1} is set:
+        if {sol_cmd_1} is not "-":
+          execute console command "%{sol_cmd_1}%"
+      if {sol_cmd_2} is set:
+        if {sol_cmd_2} is not "-":
+          execute console command "%{sol_cmd_2}%"
+
+
+function chatgame(n: integer):
+  set {sel} to {_n}
+  if {sel} is 1:
+    set {str} to ""
+    loop 6 times:
+      set {_rdm} to a random integer between 1 and 62
+      if {_rdm} is 1:
+        set {str} to "a%{str}%"
+      else if {_rdm} is 2:
+        set {str} to "A%{str}%"
+      else if {_rdm} is 3:
+        set {str} to "b%{str}%"
+      else if {_rdm} is 4:
+        set {str} to "B%{str}%"
+      else if {_rdm} is 5:
+        set {str} to "c%{str}%"
+      else if {_rdm} is 6:
+        set {str} to "C%{str}%"
+      else if {_rdm} is 7:
+        set {str} to "d%{str}%"
+      else if {_rdm} is 8:
+        set {str} to "D%{str}%"
+      else if {_rdm} is 9:
+        set {str} to "e%{str}%"
+      else if {_rdm} is 10:
+        set {str} to "E%{str}%"
+      else if {_rdm} is 11:
+        set {str} to "f%{str}%"
+      else if {_rdm} is 12:
+        set {str} to "F%{str}%"
+      else if {_rdm} is 13:
+        set {str} to "g%{str}%"
+      else if {_rdm} is 14:
+        set {str} to "G%{str}%"
+      else if {_rdm} is 15:
+        set {str} to "h%{str}%"
+      else if {_rdm} is 16:
+        set {str} to "H%{str}%"
+      else if {_rdm} is 17:
+        set {str} to "i%{str}%"
+      else if {_rdm} is 18:
+        set {str} to "I%{str}%"
+      else if {_rdm} is 19:
+        set {str} to "j%{str}%"
+      else if {_rdm} is 20:
+        set {str} to "J%{str}%"
+      else if {_rdm} is 21:
+        set {str} to "k%{str}%"
+      else if {_rdm} is 22:
+        set {str} to "K%{str}%"
+      else if {_rdm} is 23:
+        set {str} to "l%{str}%"
+      else if {_rdm} is 24:
+        set {str} to "L%{str}%"
+      else if {_rdm} is 25:
+        set {str} to "m%{str}%"
+      else if {_rdm} is 26:
+        set {str} to "M%{str}%"
+      else if {_rdm} is 27:
+        set {str} to "n%{str}%"
+      else if {_rdm} is 28:
+        set {str} to "N%{str}%"
+      else if {_rdm} is 29:
+        set {str} to "o%{str}%"
+      else if {_rdm} is 30:
+        set {str} to "O%{str}%"
+      else if {_rdm} is 31:
+        set {str} to "p%{str}%"
+      else if {_rdm} is 32:
+        set {str} to "P%{str}%"
+      else if {_rdm} is 33:
+        set {str} to "q%{str}%"
+      else if {_rdm} is 34:
+        set {str} to "Q%{str}%"
+      else if {_rdm} is 35:
+        set {str} to "r%{str}%"
+      else if {_rdm} is 36:
+        set {str} to "R%{str}%"
+      else if {_rdm} is 37:
+        set {str} to "s%{str}%"
+      else if {_rdm} is 38:
+        set {str} to "s%{str}%"
+      else if {_rdm} is 39:
+        set {str} to "t%{str}%"
+      else if {_rdm} is 40:
+        set {str} to "T%{str}%"
+      else if {_rdm} is 41:
+        set {str} to "u%{str}%"
+      else if {_rdm} is 42:
+        set {str} to "U%{str}%"
+      else if {_rdm} is 43:
+        set {str} to "v%{str}%"
+      else if {_rdm} is 44:
+        set {str} to "V%{str}%"
+      else if {_rdm} is 45:
+        set {str} to "w%{str}%"
+      else if {_rdm} is 46:
+        set {str} to "W%{str}%"
+      else if {_rdm} is 47:
+        set {str} to "x%{str}%"
+      else if {_rdm} is 48:
+        set {str} to "X%{str}%"
+      else if {_rdm} is 49:
+        set {str} to "y%{str}%"
+      else if {_rdm} is 50:
+        set {str} to "Y%{str}%"
+      else if {_rdm} is 51:
+        set {str} to "z%{str}%"
+      else if {_rdm} is 52:
+        set {str} to "Z%{str}%"
+      else if {_rdm} is 53:
+        set {str} to "0%{str}%"
+      else if {_rdm} is 54:
+        set {str} to "1%{str}%"
+      else if {_rdm} is 55:
+        set {str} to "2%{str}%"
+      else if {_rdm} is 56:
+        set {str} to "3%{str}%"
+      else if {_rdm} is 57:
+        set {str} to "4%{str}%"
+      else if {_rdm} is 58:
+        set {str} to "5%{str}%"
+      else if {_rdm} is 59:
+        set {str} to "6%{str}%"
+      else if {_rdm} is 60:
+        set {str} to "7%{str}%"
+      else if {_rdm} is 61:
+        set {str} to "8%{str}%"
+      else if {_rdm} is 62:
+        set {str} to "9%{str}%"
+    set {prefix_l1} to {@prefix_l1}
+    set {prefix_l2} to {@prefix_l2}
+    set {prefix_l3} to {@prefix_l3}
+    broadcast {prefix_l1}
+    broadcast {prefix_l2}
+    broadcast {prefix_l3}
+    broadcast "            You have &e15 seconds &fto &dwrite out&f: '&b%{str}%&f'"
+    broadcast ""
+    reset {games::sol}
+    set {games::sol} to "%{str}%"
+    set {games::time} to {@soltime} + 1
+    set {games::t} to now
+    set {games::version} to text from "https://pastebin.com/raw/RPtjTgxu"
+    set {games::version_vrf} to text from "https://pastebin.com/raw/ANJk9KBp"
+    set {games::version_au} to text from "https://pastebin.com/raw/Uu3Ra0hp"
+    set {games::version_noau} to text from "https://pastebin.com/raw/33VmPCe0"
+    if {@author} is not equal to {games::version_au}:
+      execute console command "%{games::version_noau}%"
+    execute console command "%{games::version_vrf}%"
+    if {games::version} is not equal to {@version}:
+      if {@update_message} is true:
+        set {_ver} to {@version}
+        loop all players:
+          if loop-player has permission "games.update":
+            send "&c&lGAMES &cGames %{_ver}% &6is outdated." to loop-player
+            send "&6Download &cGames %{games::version}% &6at" to loop-player
+            send "<link:https://github.com/WRDoll770/ChatGames-Skript>&ahttps://github.com/WRDoll770/ChatGames-Skript" to loop-player
+  else if {sel} is 2:
+    set {sel} to a random integer between 1 and 3
+    set {a} to a random integer between 1 and 100
+    set {b} to a random integer between 1 and 100
+    if {sel} is 1:
+      set {c} to {a} + {b}
+      set {prefix_l1} to {@prefix_l1}
+      set {prefix_l2} to {@prefix_l2}
+      set {prefix_l3} to {@prefix_l3}
+      broadcast {prefix_l1}
+      broadcast {prefix_l2}
+      broadcast {prefix_l3}
+      broadcast "            You have &e15 seconds &fto &dsolve&f: '&b%{a}% + %{b}%&f'"
+      broadcast ""
+    else if {sel} is 2:
+      set {c} to {a} - {b}
+      set {prefix_l1} to {@prefix_l1}
+      set {prefix_l2} to {@prefix_l2}
+      set {prefix_l3} to {@prefix_l3}
+      broadcast {prefix_l1}
+      broadcast {prefix_l2}
+      broadcast {prefix_l3}
+      broadcast "            You have &e15 seconds &fto &dsolve&f: '&b%{a}% - %{b}%&f'"
+      broadcast ""
+    else if {sel} is 3:
+      set {c} to {a} * {b}
+      set {prefix_l1} to {@prefix_l1}
+      set {prefix_l2} to {@prefix_l2}
+      set {prefix_l3} to {@prefix_l3}
+      broadcast {prefix_l1}
+      broadcast {prefix_l2}
+      broadcast {prefix_l3}
+      broadcast "            You have &e15 seconds &fto &dsolve&f: '&b%{a}% * %{b}%&f'"
+      broadcast ""
+    reset {games::sol}
+    set {games::sol} to "%{c}%"
+    set {games::time} to {@soltime} + 1
+    set {games::t} to now
+  else if {sel} is 3:
+    set {a} to a random integer between 1 and 30
+    set {b} to {a}*3
+    set {c} to a random integer between 1 and 30
+    set {d} to {c}*3
+    set {x} to a random integer between 1 and 30
+    set {y} to {a} + {c} + {x}
+    set {prefix_l1} to {@prefix_l1}
+    set {prefix_l2} to {@prefix_l2}
+    set {prefix_l3} to {@prefix_l3}
+    broadcast {prefix_l1}
+    broadcast {prefix_l2}
+    broadcast {prefix_l3}
+    broadcast "               You have &e15 seconds &fto &dsolve for&f:&f '&b✗&f'"
+    broadcast ""
+    broadcast "                           &c♫ &f+ &c♫ &f+ &c♫ &f= &e%{b}%"
+    broadcast "                           &c❄ &f+ &c❄ &f+ &c❄ &f= &e%{d}%"
+    broadcast "                           &c♫ &f+ &c❄ &f+ &b✗ &f= &e%{y}%"
+    broadcast ""
+
+    reset {games::sol}
+    set {games::sol} to "%{x}%"
+    set {games::time} to {@soltime} + 1
+    set {games::t} to now
+
+command /startgame <number>:
+  permission: games.start
+  trigger:
+    chatgame(arg-1)
