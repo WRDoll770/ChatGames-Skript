@@ -1,4 +1,5 @@
 options:
+  terms_of_service: false # READ THE ToS FIRST!!
   cooldown: 180 seconds
   soltime: 15
   prefix_l1: ""
@@ -12,7 +13,8 @@ options:
 
 every {@cooldown}:
   set {sel_} to a random integer between 1 and 3
-  chatgame({sel_})
+  if {@terms_of_service} is true:
+    chatgame({sel_})
 
 every second:
   if {games::time} is more than 0:
